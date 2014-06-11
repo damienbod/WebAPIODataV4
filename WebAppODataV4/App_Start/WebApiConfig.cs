@@ -18,6 +18,7 @@ namespace WebAppODataV4
             );
 
             var builder = new ODataConventionModelBuilder();
+
             builder.EntitySet<Address>("Address");
             builder.EntitySet<AddressType>("AddressType");
             builder.EntitySet<BusinessEntity>("BusinessEntity");
@@ -31,6 +32,7 @@ namespace WebAppODataV4
             builder.EntitySet<PersonPhone>("PersonPhone");
             builder.EntitySet<PhoneNumberType>("PhoneNumberType");
             builder.EntitySet<StateProvince>("StateProvince");
+
             config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
         }
     }

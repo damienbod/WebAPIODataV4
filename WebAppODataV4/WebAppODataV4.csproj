@@ -171,8 +171,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\BusinessEntityController.cs" />
+    <Compile Include="Controllers\EmailAddressController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\PersonPhoneController.cs" />
     <Compile Include="Database\Address.cs" />
     <Compile Include="Database\AddressType.cs" />
     <Compile Include="Database\BusinessEntity.cs" />
