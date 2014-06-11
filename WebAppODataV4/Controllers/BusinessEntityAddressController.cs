@@ -15,9 +15,10 @@ namespace WebAppODataV4.Controllers
             return Ok(_db.BusinessEntityAddress.AsQueryable());
         }
 
+        [EnableQuery(PageSize = 20)]
         public IHttpActionResult Get([FromODataUri] int key)
         {
-            return Ok(_db.BusinessEntityAddress.SingleOrDefault(t => t.BusinessEntityID == key));
+            return Ok(_db.BusinessEntityAddress.Find(key));
         }
 
         protected override void Dispose(bool disposing)

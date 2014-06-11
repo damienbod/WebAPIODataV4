@@ -15,9 +15,10 @@ namespace WebAppODataV4.Controllers
             return Ok(_db.Address.AsQueryable());
         }
 
+        [EnableQuery(PageSize = 20)]
         public IHttpActionResult Get([FromODataUri] int key)
         {
-            return Ok(_db.Address.SingleOrDefault(t => t.AddressID == key));
+            return Ok(_db.Address.Find(key));
         }
 
         protected override void Dispose(bool disposing)

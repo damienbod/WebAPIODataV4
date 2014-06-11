@@ -29,6 +29,7 @@ namespace WebAppODataV4.Controllers
             return Ok(_db.PersonPhone.AsQueryable());
         }
 
+        [EnableQuery(PageSize = 20)]
         public IHttpActionResult GetPersonPhone([FromODataUri] int key, ODataQueryOptions<PersonPhone> queryOptions)
         {
             try
