@@ -11,13 +11,13 @@ namespace WebAppODataV4.Controllers
     {
         readonly DomainModel _db = new DomainModel();
 
-        [EnableQuery(PageSize = 20, AllowedQueryOptions= AllowedQueryOptions.Filter  )]
+        [EnableQuery(PageSize = 20, AllowedQueryOptions= AllowedQueryOptions.All  )]
         public IHttpActionResult Get()
         {  
             return Ok(_db.Person.AsQueryable());
         }
 
-        [EnableQuery(PageSize = 20)]
+        [EnableQuery(PageSize = 20, AllowedQueryOptions = AllowedQueryOptions.All)]
         public IHttpActionResult Get([FromODataUri] int key)
         {
             return Ok(_db.Person.Find(key));
