@@ -33,6 +33,12 @@ namespace WebAppODataV4
             builder.EntitySet<PhoneNumberType>("PhoneNumberType");
             builder.EntitySet<StateProvince>("StateProvince");
 
+            //var productType = builder.EntityType<Person>();
+
+            //productType.Collection
+            //    .Function("MostExpensive")
+            //    .Returns<double>();
+
             config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
         }
     }
