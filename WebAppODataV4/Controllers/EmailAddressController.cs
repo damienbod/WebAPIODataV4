@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Http;
-using System.Web.Http.OData;
+using System.Web.OData;
 using WebAppODataV4.Database;
 
 namespace WebAppODataV4.Controllers

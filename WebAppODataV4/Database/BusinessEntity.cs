@@ -19,7 +19,7 @@ namespace WebAppODataV4.Database
 
         public Guid rowguid { get; set; }
 
-        public DateTime ModifiedDate { get; set; }
+        public DateTimeOffset ModifiedDate { get; set; }
 
         public virtual ICollection<BusinessEntityAddress> BusinessEntityAddress { get; set; }
 

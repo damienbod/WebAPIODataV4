@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Net;
 using System.Web.Http;
-using System.Web.Http.OData;
-using System.Web.Http.OData.Query;
+using System.Web.OData;
+using System.Web.OData.Query;
 using WebAppODataV4.Database;
 using Microsoft.Data.OData;
 

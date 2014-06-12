@@ -23,7 +23,7 @@ namespace WebAppODataV4.Database
 
         public Guid rowguid { get; set; }
 
-        public DateTime ModifiedDate { get; set; }
+        //public DateTime ModifiedDate { get; set; }
 
         public virtual Person Person { get; set; }
     }

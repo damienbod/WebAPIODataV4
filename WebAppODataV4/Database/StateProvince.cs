@@ -34,7 +34,7 @@ namespace WebAppODataV4.Database
 
         public Guid rowguid { get; set; }
 
-        public DateTime ModifiedDate { get; set; }
+        //public DateTime ModifiedDate { get; set; }
 
         public virtual ICollection<Address> Address { get; set; }
 

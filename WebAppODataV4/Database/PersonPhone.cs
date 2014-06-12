@@ -24,7 +24,7 @@ namespace WebAppODataV4.Database
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PhoneNumberTypeID { get; set; }
 
-        public DateTime ModifiedDate { get; set; }
+        //public DateTime ModifiedDate { get; set; }
 
         public virtual Person Person { get; set; }
 

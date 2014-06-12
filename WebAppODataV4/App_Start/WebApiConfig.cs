@@ -1,6 +1,8 @@
-﻿using System.Web.Http;
-using System.Web.Http.OData.Builder;
-using System.Web.Http.OData.Extensions;
+﻿//using System.Web.Http;
+
+using System.Web.Http;
+using System.Web.OData.Builder;
+using System.Web.OData.Extensions;
 using WebAppODataV4.Database;
 
 namespace WebAppODataV4
@@ -32,12 +34,13 @@ namespace WebAppODataV4
             builder.EntitySet<PersonPhone>("PersonPhone");
             builder.EntitySet<PhoneNumberType>("PhoneNumberType");
             builder.EntitySet<StateProvince>("StateProvince");
-       
-            var action = builder.Entity<Person>().Action("ChangePersonStatus");
+                 
+            var action = builder.EntityType<Person>().Action("ChangePersonStatus");
             action.Parameter<string>("Level");
             action.Returns<bool>();
 
-            config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
+            config.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
+            //config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
         }
     }
 }

@@ -1,10 +1,8 @@
-﻿using System.Data.Entity.Migrations;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.OData;
-using System.Web.Http.OData.Query;
+using System.Web.OData;
+using System.Web.OData.Query;
 using WebAppODataV4.Database;
 
 namespace WebAppODataV4.Controllers

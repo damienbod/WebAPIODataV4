@@ -22,7 +22,7 @@ namespace WebAppODataV4.Database
         [StringLength(50)]
         public string Name { get; set; }
 
-        public DateTime ModifiedDate { get; set; }
+        //public DateTime ModifiedDate { get; set; }
 
         public virtual ICollection<StateProvince> StateProvince { get; set; }
     }
