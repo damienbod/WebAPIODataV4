@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System.Data.Entity.Migrations;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.OData;
 using System.Web.Http.OData.Query;
@@ -21,6 +23,21 @@ namespace WebAppODataV4.Controllers
         public IHttpActionResult Get([FromODataUri] int key)
         {
             return Ok(_db.Person.Find(key));
+        }
+
+        /// <summary>
+        /// This is a Odata Action for complex data changes...
+        /// </summary>
+        [HttpPost]
+        public async Task<IHttpActionResult> ChangePersonStatus([FromODataUri] int key, [FromBody]ODataActionParameters parameters)
+        {
+            if (ModelState.IsValid)
+            {
+                var level = parameters["Level"];
+                // SAVE THIS TO THE DATABASE OR WHATEVER....
+            }
+           
+            return Ok(true);
         }
 
         protected override void Dispose(bool disposing)
