@@ -1,8 +1,8 @@
-﻿//using System.Web.Http;
-
+﻿using System.Linq;
 using System.Web.Http;
 using System.Web.OData.Builder;
 using System.Web.OData.Extensions;
+using Microsoft.Data.Edm;
 using WebAppODataV4.Database;
 
 namespace WebAppODataV4
@@ -19,7 +19,12 @@ namespace WebAppODataV4
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            var builder = new ODataConventionModelBuilder();
+            config.MapODataServiceRoute("odata", "odata", model: GetModel());         
+        }
+
+        public static Microsoft.OData.Edm.IEdmModel GetModel()
+        {
+            ODataModelBuilder builder = new ODataConventionModelBuilder();
 
             builder.EntitySet<Address>("Address");
             builder.EntitySet<AddressType>("AddressType");
@@ -30,17 +35,25 @@ namespace WebAppODataV4
             builder.EntitySet<CountryRegion>("CountryRegion");
             builder.EntitySet<EmailAddress>("EmailAddress");
             builder.EntitySet<Password>("Password");
-            builder.EntitySet<Person>("Person");
+            //builder.EntitySet<Person>("Person");
             builder.EntitySet<PersonPhone>("PersonPhone");
             builder.EntitySet<PhoneNumberType>("PhoneNumberType");
             builder.EntitySet<StateProvince>("StateProvince");
-                 
-            var action = builder.EntityType<Person>().Action("ChangePersonStatus");
-            action.Parameter<string>("Level");
-            action.Returns<bool>();
 
-            config.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
-            //config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
+            EntitySetConfiguration<Person> persons = builder.EntitySet<Person>("Person");
+
+            FunctionConfiguration myFirstFunction = persons.EntityType.Collection.Function("MyFirstFunction");
+            myFirstFunction.ReturnsCollectionFromEntitySet<Person>("Person");
+
+            ActionConfiguration changePersonStatus = persons.EntityType.Action("ChangePersonStatus");
+            changePersonStatus.Parameter<string>("Level");
+            changePersonStatus.Returns<bool>();
+
+            //var action = builder.EntityType<Person>().Action("ChangePersonStatus");
+            //action.Parameter<string>("Level");
+            //action.Returns<bool>();
+           
+            return builder.GetEdmModel();
         }
     }
 }
