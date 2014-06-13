@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using System.Web.OData.Query;
@@ -72,6 +73,21 @@ namespace WebAppODataV4.Controllers
             _db.SaveChanges();
             return Created(personPhone);
 
+        }
+
+        /// <summary>
+        /// This is a Odata Action for complex data changes...
+        /// </summary>
+       [HttpPost]
+        public async Task<IHttpActionResult> ChangePersonStatus([FromODataUri] int key, [FromBody]ODataActionParameters parameters)
+        {
+            if (ModelState.IsValid)
+            {
+                var level = parameters["Level"];
+                // SAVE THIS TO THE DATABASE OR WHATEVER....
+            }
+
+            return Ok(true);
         }
 
         // PATCH: odata/PersonPhones(5)

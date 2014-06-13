@@ -20,7 +20,7 @@ namespace WebAppODataV4.Database
         [StringLength(50)]
         public string Name { get; set; }
 
-        public DateTimeOffset ModifiedDate { get; set; }
+        //public DateTimeOffset ModifiedDate { get; set; }
 
         public virtual ICollection<PersonPhone> PersonPhone { get; set; }
     }

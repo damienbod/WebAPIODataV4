@@ -2,6 +2,7 @@
 using System.Web.Http;
 using System.Web.OData.Builder;
 using System.Web.OData.Extensions;
+using System.Web.OData.Routing;
 using Microsoft.Data.Edm;
 using WebAppODataV4.Database;
 
@@ -35,23 +36,19 @@ namespace WebAppODataV4
             builder.EntitySet<CountryRegion>("CountryRegion");
             builder.EntitySet<EmailAddress>("EmailAddress");
             builder.EntitySet<Password>("Password");
-            //builder.EntitySet<Person>("Person");
+            builder.EntitySet<Person>("Person");
             builder.EntitySet<PersonPhone>("PersonPhone");
             builder.EntitySet<PhoneNumberType>("PhoneNumberType");
-            builder.EntitySet<StateProvince>("StateProvince");
+            builder.EntitySet<StateProvince>("StateProvince");     
 
             EntitySetConfiguration<Person> persons = builder.EntitySet<Person>("Person");
-
+            
             FunctionConfiguration myFirstFunction = persons.EntityType.Collection.Function("MyFirstFunction");
             myFirstFunction.ReturnsCollectionFromEntitySet<Person>("Person");
-
-            ActionConfiguration changePersonStatus = persons.EntityType.Action("ChangePersonStatus");
-            changePersonStatus.Parameter<string>("Level");
-            changePersonStatus.Returns<bool>();
-
-            //var action = builder.EntityType<Person>().Action("ChangePersonStatus");
-            //action.Parameter<string>("Level");
-            //action.Returns<bool>();
+    
+            ActionConfiguration action = builder.EntityType<PersonPhone>().Action("ChangePersonStatus");
+            action.Parameter<string>("Level");
+            action.Returns<bool>();
            
             return builder.GetEdmModel();
         }
