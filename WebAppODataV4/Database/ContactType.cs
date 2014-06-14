@@ -1,3 +1,5 @@
+using System.Linq.Expressions;
+
 namespace WebAppODataV4.Database
 {
     using System;
@@ -9,6 +11,21 @@ namespace WebAppODataV4.Database
     [Table("Person.ContactType")]
     public partial class ContactType
     {
+        public static class ContactTypeExpressions
+        {
+            public static readonly Expression<Func<ContactType, DateTime>> ModifiedDate = c => c.LastModifiedOnInternal;
+        }
+
+        // Other properties
+
+        public DateTimeOffset ModifiedDate
+        {
+            get { return new DateTimeOffset(LastModifiedOnInternal); }
+            set { LastModifiedOnInternal = value.DateTime; }
+        }
+
+        private DateTime LastModifiedOnInternal { get; set; }
+
         public ContactType()
         {
             BusinessEntityContact = new HashSet<BusinessEntityContact>();
@@ -19,8 +36,6 @@ namespace WebAppODataV4.Database
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
-
-        //public DateTime ModifiedDate { get; set; }
 
         public virtual ICollection<BusinessEntityContact> BusinessEntityContact { get; set; }
     }

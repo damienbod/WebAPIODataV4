@@ -48,9 +48,9 @@ namespace WebAppODataV4
             actionY.Parameter<string>("Level");
             actionY.Returns<bool>();
 
-            var actionX = contactType.EntityType.Collection.Action("ChangePersonStatus");
-            actionX.Parameter<string>("Level");
-            actionX.Returns<bool>();
+            var changePersonStatusAction = contactType.EntityType.Collection.Action("ChangePersonStatus");
+            changePersonStatusAction.Parameter<string>("Level");
+            changePersonStatusAction.Returns<bool>();
 
             FunctionConfiguration myFirstFunction = persons.EntityType.Collection.Function("MyFirstFunction");
             myFirstFunction.ReturnsCollectionFromEntitySet<Person>("Person");
