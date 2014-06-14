@@ -1,12 +1,12 @@
 ﻿using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using System.Web.OData.Query;
+using System.Web.OData.Routing;
+using Microsoft.OData.Core;
 using WebAppODataV4.Database;
-using Microsoft.Data.OData;
 
 namespace WebAppODataV4.Controllers
 {
@@ -16,33 +16,15 @@ namespace WebAppODataV4.Controllers
         private static readonly ODataValidationSettings _validationSettings = new ODataValidationSettings();
 
         [EnableQuery(PageSize = 20)]
-        public IHttpActionResult GetPersonPhone(ODataQueryOptions<PersonPhone> queryOptions)
+        public IHttpActionResult Get()
         {
-            try
-            {
-                queryOptions.Validate(_validationSettings);
-            }
-            catch (ODataException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-
             return Ok(_db.PersonPhone.AsQueryable());
         }
 
         [EnableQuery(PageSize = 20)]
-        public IHttpActionResult GetPersonPhone([FromODataUri] int key, ODataQueryOptions<PersonPhone> queryOptions)
+        public IHttpActionResult Get([FromODataUri] int key)
         {
-            try
-            {
-                queryOptions.Validate(_validationSettings);
-            }
-            catch (ODataException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-
-            return Ok(_db.PersonPhone.SingleOrDefault(t => t.BusinessEntityID == key));
+            return Ok(_db.PersonPhone.Find(key));
         }
 
         public IHttpActionResult Put([FromODataUri] int key, PersonPhone personPhone)
@@ -73,21 +55,6 @@ namespace WebAppODataV4.Controllers
             _db.SaveChanges();
             return Created(personPhone);
 
-        }
-
-        /// <summary>
-        /// This is a Odata Action for complex data changes...
-        /// </summary>
-       [HttpPost]
-        public async Task<IHttpActionResult> ChangePersonStatus([FromODataUri] int key, [FromBody]ODataActionParameters parameters)
-        {
-            if (ModelState.IsValid)
-            {
-                var level = parameters["Level"];
-                // SAVE THIS TO THE DATABASE OR WHATEVER....
-            }
-
-            return Ok(true);
         }
 
         // PATCH: odata/PersonPhones(5)

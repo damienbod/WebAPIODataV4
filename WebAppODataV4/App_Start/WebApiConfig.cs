@@ -3,7 +3,6 @@ using System.Web.Http;
 using System.Web.OData.Builder;
 using System.Web.OData.Extensions;
 using System.Web.OData.Routing;
-using Microsoft.Data.Edm;
 using WebAppODataV4.Database;
 
 namespace WebAppODataV4
@@ -20,7 +19,8 @@ namespace WebAppODataV4
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            config.MapODataServiceRoute("odata", "odata", model: GetModel());         
+            ODataRoute route = config.MapODataServiceRoute("odata", "odata", model: GetModel());
+            //System.Web.OData.Routing.MapODataRouteAttributes(config);
         }
 
         public static Microsoft.OData.Edm.IEdmModel GetModel()
@@ -42,14 +42,19 @@ namespace WebAppODataV4
             builder.EntitySet<StateProvince>("StateProvince");     
 
             EntitySetConfiguration<Person> persons = builder.EntitySet<Person>("Person");
-            
+
+            EntitySetConfiguration<ContactType> contactType = builder.EntitySet<ContactType>("ContactType");
+            var actionY = contactType.EntityType.Action("ChangePersonStatus");
+            actionY.Parameter<string>("Level");
+            actionY.Returns<bool>();
+
+            var actionX = contactType.EntityType.Collection.Action("ChangePersonStatus");
+            actionX.Parameter<string>("Level");
+            actionX.Returns<bool>();
+
             FunctionConfiguration myFirstFunction = persons.EntityType.Collection.Function("MyFirstFunction");
             myFirstFunction.ReturnsCollectionFromEntitySet<Person>("Person");
     
-            ActionConfiguration action = builder.EntityType<PersonPhone>().Action("ChangePersonStatus");
-            action.Parameter<string>("Level");
-            action.Returns<bool>();
-           
             return builder.GetEdmModel();
         }
     }
