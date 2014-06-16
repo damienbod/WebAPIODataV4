@@ -30,6 +30,9 @@ namespace WebAppODataV4.Database
         {
             modelBuilder.Entity<ContactType>().Ignore(c => c.ModifiedDate);
             modelBuilder.Entity<ContactType>().Property(WebAppODataV4.Database.ContactType.ContactTypeExpressions.ModifiedDate).HasColumnName("ModifiedDate");
+
+            modelBuilder.Entity<PhoneNumberType>().Ignore(c => c.ModifiedDate);
+            modelBuilder.Entity<PhoneNumberType>().Property(WebAppODataV4.Database.PhoneNumberType.PhoneNumberTypeExpressions.ModifiedDate).HasColumnName("ModifiedDate");
        
             modelBuilder.Entity<Address>()
                 .HasMany(e => e.BusinessEntityAddress)

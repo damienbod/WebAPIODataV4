@@ -4,6 +4,7 @@ using System.Web.OData;
 using System.Web.OData.Query;
 using System.Web.OData.Routing;
 using WebAppODataV4.Database;
+using WebAppODataV4.Models;
 
 namespace WebAppODataV4.Controllers
 {
@@ -33,6 +34,23 @@ namespace WebAppODataV4.Controllers
         {
             return Ok(_db.Person.Where(t => t.FirstName.StartsWith("K")));
         }
+
+ 
+
+        [HttpGet]
+        [EnableQuery(PageSize = 20, AllowedQueryOptions = AllowedQueryOptions.All)]
+        [ODataRoute("Default.PersonSearchPerPhoneType(PhoneNumberTypeEnum={phoneNumberTypeEnum})")]
+        public IHttpActionResult PersonSearchPerPhoneType([FromODataUri] PhoneNumberTypeEnum phoneNumberTypeEnum)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            return Ok("");
+        }
+
+        
 
         protected override void Dispose(bool disposing)
         {

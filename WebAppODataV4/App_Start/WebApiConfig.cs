@@ -4,6 +4,7 @@ using System.Web.OData.Builder;
 using System.Web.OData.Extensions;
 using System.Web.OData.Routing;
 using WebAppODataV4.Database;
+using WebAppODataV4.Models;
 
 namespace WebAppODataV4
 {
@@ -54,6 +55,10 @@ namespace WebAppODataV4
 
             FunctionConfiguration myFirstFunction = persons.EntityType.Collection.Function("MyFirstFunction");
             myFirstFunction.ReturnsCollectionFromEntitySet<Person>("Person");
+
+            FunctionConfiguration myPersonSearchPerPhoneType = persons.EntityType.Collection.Function("PersonSearchPerPhoneType");
+            myPersonSearchPerPhoneType.Parameter<PhoneNumberTypeEnum>("PhoneNumberTypeEnum");
+            myPersonSearchPerPhoneType.ReturnsCollectionFromEntitySet<Person>("Person");
     
             return builder.GetEdmModel();
         }
