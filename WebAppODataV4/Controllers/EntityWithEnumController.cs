@@ -31,7 +31,12 @@ namespace WebAppODataV4.Controllers
         [EnableQuery(PageSize = 20)]
         public IHttpActionResult Get([FromODataUri] string key)
         {
-            return Ok(someData[0]);
+            if (someData.Exists(t => t.Name == key))
+            {
+                return Ok(someData.FirstOrDefault(t => t.Name == key));
+            }
+
+            return BadRequest("key does not key");
         }
 
         [HttpPost]
