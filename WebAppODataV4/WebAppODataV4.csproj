@@ -180,6 +180,7 @@
     <Compile Include="Controllers\BusinessEntityController.cs" />
     <Compile Include="Controllers\ContactTypeController.cs" />
     <Compile Include="Controllers\EmailAddressController.cs" />
+    <Compile Include="Controllers\EntityWithEnumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\PersonPhoneController.cs" />

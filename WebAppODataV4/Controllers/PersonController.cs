@@ -37,18 +37,18 @@ namespace WebAppODataV4.Controllers
 
  
 
-        [HttpGet]
-        [EnableQuery(PageSize = 20, AllowedQueryOptions = AllowedQueryOptions.All)]
-        [ODataRoute("Default.PersonSearchPerPhoneType(PhoneNumberTypeEnum={phoneNumberTypeEnum})")]
-        public IHttpActionResult PersonSearchPerPhoneType([FromODataUri] PhoneNumberTypeEnum phoneNumberTypeEnum)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[HttpGet]
+        //[EnableQuery(PageSize = 20, AllowedQueryOptions = AllowedQueryOptions.All)]
+        //[ODataRoute("Default.PersonSearchPerPhoneType(PhoneNumberTypeEnum={phoneNumberTypeEnum})")]
+        //public IHttpActionResult PersonSearchPerPhoneType([FromODataUri] PhoneNumberTypeEnum phoneNumberTypeEnum)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            return Ok("");
-        }
+        //    return Ok("");
+        //}
 
         
 

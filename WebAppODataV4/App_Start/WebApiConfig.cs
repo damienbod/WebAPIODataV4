@@ -40,9 +40,9 @@ namespace WebAppODataV4
             builder.EntitySet<Person>("Person");
             builder.EntitySet<PersonPhone>("PersonPhone");
             builder.EntitySet<PhoneNumberType>("PhoneNumberType");
-            builder.EntitySet<StateProvince>("StateProvince");     
+            builder.EntitySet<StateProvince>("StateProvince");
 
-            EntitySetConfiguration<Person> persons = builder.EntitySet<Person>("Person");
+            builder.EntitySet<EntityWithEnum>("EntityWithEnum");
 
             EntitySetConfiguration<ContactType> contactType = builder.EntitySet<ContactType>("ContactType");
             var actionY = contactType.EntityType.Action("ChangePersonStatus");
@@ -53,12 +53,14 @@ namespace WebAppODataV4
             changePersonStatusAction.Parameter<string>("Level");
             changePersonStatusAction.Returns<bool>();
 
+            EntitySetConfiguration<Person> persons = builder.EntitySet<Person>("Person");
             FunctionConfiguration myFirstFunction = persons.EntityType.Collection.Function("MyFirstFunction");
             myFirstFunction.ReturnsCollectionFromEntitySet<Person>("Person");
 
-            FunctionConfiguration myPersonSearchPerPhoneType = persons.EntityType.Collection.Function("PersonSearchPerPhoneType");
-            myPersonSearchPerPhoneType.Parameter<PhoneNumberTypeEnum>("PhoneNumberTypeEnum");
-            myPersonSearchPerPhoneType.ReturnsCollectionFromEntitySet<Person>("Person");
+            EntitySetConfiguration<EntityWithEnum> entitesWithEnum = builder.EntitySet<EntityWithEnum>("EntityWithEnum");
+            FunctionConfiguration functionEntitesWithEnum = entitesWithEnum.EntityType.Collection.Function("PersonSearchPerPhoneType");
+            functionEntitesWithEnum.Parameter<PhoneNumberTypeEnum>("PhoneNumberTypeEnum");
+            functionEntitesWithEnum.ReturnsCollectionFromEntitySet<EntityWithEnum>("EntityWithEnum");
     
             return builder.GetEdmModel();
         }
