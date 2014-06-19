@@ -44,6 +44,7 @@ namespace WebAppODataV4.Controllers
             return Created(contactType);
         }
 
+
         [ODataRoute("({key})")]
         [HttpPut]
         [EnableQuery(AllowedQueryOptions = AllowedQueryOptions.All)]
@@ -61,11 +62,11 @@ namespace WebAppODataV4.Controllers
 
             _db.ContactType.AddOrUpdate(contactType);
             _db.SaveChanges();
-            // Updated is not supported yet, you should implement the correct response in a real app
-            return Ok(contactType);
+
+            return Updated(contactType);
         }
 
-        [ODataRoute()]
+        [ODataRoute("")]
         [HttpDelete]
         [EnableQuery(AllowedQueryOptions = AllowedQueryOptions.All)]
         public IHttpActionResult Delete([FromODataUri] int key)
@@ -74,8 +75,7 @@ namespace WebAppODataV4.Controllers
             _db.ContactType.Remove(entityInDb);
             _db.SaveChanges();
 
-            // No Content not supported yet
-            return Ok("Deleted");
+            return Content(HttpStatusCode.NoContent, "Deleted");
         }
 
         [ODataRoute()]
@@ -91,8 +91,7 @@ namespace WebAppODataV4.Controllers
             var contactType = _db.ContactType.Single(t => t.ContactTypeID == key);
             delta.Patch(contactType);
             _db.SaveChanges();
-            // Updated is not supported yet, you should implement the correct response in a real app
-            return Ok(contactType);
+            return Updated(contactType);
         }
 
         /// <summary>
