@@ -13,3 +13,5 @@ Part 5 <a href="http://damienbod.wordpress.com/2014/06/19/web-api-odata-v4-using
 Part 6 <a href="http://damienbod.wordpress.com/2014/06/22/web-api-odata-v4-using-contained-models-part-6/">Web API OData V4 Using Contained Models Part 6</a>
 
 Part 7 <a href="http://damienbod.wordpress.com/2014/07/01/web-api-odata-v4-using-a-singleton-part-7/">Web API OData V4 Using a Singleton Part 7</a>
+
+Part 8 <a href="http://damienbod.wordpress.com/2014/07/09/web-api-odata-v4-using-an-odata-t4-generated-client-part-8/">Web API OData V4 Using an OData T4 generated client Part 8</a>
