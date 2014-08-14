@@ -17,3 +17,5 @@ Part 7 <a href="http://damienbod.wordpress.com/2014/07/01/web-api-odata-v4-using
 Part 8 <a href="http://damienbod.wordpress.com/2014/07/09/web-api-odata-v4-using-an-odata-t4-generated-client-part-8/">Web API OData V4 Using an OData T4 generated client Part 8</a>
 
 Part 9 <a href="http://damienbod.wordpress.com/2014/07/13/web-api-odata-v4-cache-part-9/">Web API OData V4 Caching Part 9</a>
+
+Part 10 <a href="http://damienbod.wordpress.com/2014/08/14/web-api-odata-v4-batching-part-10/">Web API OData V4 Batching Part 10</a>
