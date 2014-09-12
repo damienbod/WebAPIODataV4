@@ -19,3 +19,5 @@ Part 8 <a href="http://damienbod.wordpress.com/2014/07/09/web-api-odata-v4-using
 Part 9 <a href="http://damienbod.wordpress.com/2014/07/13/web-api-odata-v4-cache-part-9/">Web API OData V4 Caching Part 9</a>
 
 Part 10 <a href="http://damienbod.wordpress.com/2014/08/14/web-api-odata-v4-batching-part-10/">Web API OData V4 Batching Part 10</a>
+
+Part 11 <a href="http://damienbod.wordpress.com/2014/09/12/web-api-odata-v4-keys-composite-keys-and-functions-part-11/">Web API OData V4 Keys, Composite Keys and Functions Part 11</a>
